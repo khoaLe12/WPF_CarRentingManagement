@@ -1,0 +1,55 @@
+﻿<Window x:Class="LeDangKhoaWPF.View.CreateCar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LeDangKhoaWPF.View"
+        mc:Ignorable="d"
+        Title="CreateCar" Height="450" Width="800"
+        Closing="Window_Closing">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Name" FontSize="17" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="Description" FontSize="17" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="Number Of Doors" FontSize="17" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="Seating Capacity" FontSize="17" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="Fuel type" FontSize="17" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="5" Grid.Column="1" Text="Year" FontSize="17" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="6" Grid.Column="1" Text="Status" FontSize="17" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="7" Grid.Column="1" Text="Renting Price / Day" FontSize="17" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" Text="Manufacturer" FontSize="17"/>
+        <TextBlock Grid.Row="9" Grid.Column="1" VerticalAlignment="Center"  Text="Supplier" FontSize="17"/>
+
+        <TextBox Grid.Row="0" Grid.Column="2" Margin="0,5,0,10" Text="{Binding Name, Mode=OneWayToSource}"/>
+        <TextBox Grid.Row="1" Grid.Column="2" Margin="0,5,0,10" Text="{Binding CarDesciption, Mode=OneWayToSource}"/>
+        <TextBox Grid.Row="2" Grid.Column="2" Margin="0,5,0,10" Text="{Binding NumberOfDoors, Mode=OneWayToSource}"/>
+        <TextBox Grid.Row="3" Grid.Column="2" Margin="0,5,0,10" Text="{Binding SeatingCapacity, Mode=OneWayToSource}"/>
+        <TextBox Grid.Row="4" Grid.Column="2" Margin="0,5,0,10" Text="{Binding FuelType, Mode=OneWayToSource}"/>
+        <TextBox Grid.Row="5" Grid.Column="2" Margin="0,5,0,10" Text="{Binding Year, Mode=OneWayToSource}"/>
+        <CheckBox Grid.Row="6" Grid.Column="2" VerticalAlignment="Center" IsChecked="{Binding CarStatus}"/>
+        <TextBox Grid.Row="7" Grid.Column="2" Margin="0,5,0,10" Text="{Binding CarRentingPricePerDay, Mode=OneWayToSource}"/>
+        <ListBox Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,5,0,5" Width="Auto" ItemsSource="{Binding Manufacturers}" SelectedItem="{Binding Manufacturer, Mode=OneWayToSource}"/>
+        <ListBox Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,5,0,5" Width="Auto" ItemsSource="{Binding Suppliers}" SelectedItem="{Binding Supplier, Mode=OneWayToSource}"/>
+
+        <Button Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" Width="60" Height="30" Content="Create" Command="{Binding CreateCommand}"/>
+    </Grid>
+</Window>

@@ -1,0 +1,28 @@
+﻿<Window x:Class="LeDangKhoaWPF.View.TransactionDetail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LeDangKhoaWPF.View"
+        mc:Ignorable="d"
+        Title="TransactionDetail" Height="450" Width="800"
+        Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <ListView Grid.Row="1" ItemsSource="{Binding TransactionDetails, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="100" Header="Start Date" DisplayMemberBinding="{Binding StartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <GridViewColumn Width="100" Header="End Date" DisplayMemberBinding="{Binding EndDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <GridViewColumn Width="100" Header="Price" DisplayMemberBinding="{Binding Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <GridViewColumn Width="100" Header="Car Id" DisplayMemberBinding="{Binding CarId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <GridViewColumn Width="100" Header="Car Name" DisplayMemberBinding="{Binding CarName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <GridViewColumn Width="150" Header="Renting price Per Date" DisplayMemberBinding="{Binding RentingPricePerDay, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

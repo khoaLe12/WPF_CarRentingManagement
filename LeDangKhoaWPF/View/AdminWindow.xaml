@@ -1,0 +1,103 @@
+﻿<Window x:Class="LeDangKhoaWPF.View.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LeDangKhoaWPF.View"
+        mc:Ignorable="d"
+        Title="AdminWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding DisplayName, Mode=OneWay}" FontSize="30"  VerticalAlignment="Center"/>
+        <TabControl TabStripPlacement="Left" Grid.Row="1">
+            <TabItem Header="Customer" Width="100" Height="50">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ListView Name="CustomerList" ItemsSource="{Binding Customers, Mode=OneWay}" SelectedItem="{Binding SelectedCustomer, Mode=OneWayToSource}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="50" Header="Id" DisplayMemberBinding="{Binding CustomerId}"/>
+                                <GridViewColumn Width="100" Header="Name" DisplayMemberBinding="{Binding CustomerName}"/>
+                                <GridViewColumn Width="100" Header="Phone" DisplayMemberBinding="{Binding Telephone}"/>
+                                <GridViewColumn Width="100" Header="Email" DisplayMemberBinding="{Binding Email}"/>
+                                <GridViewColumn Width="100" Header="BirthDate" DisplayMemberBinding="{Binding CustomerBirthday}"/>
+                                <GridViewColumn Width="100" Header="Status" DisplayMemberBinding="{Binding CustomerStatus}"/>
+                                <GridViewColumn Width="100" Header="Password" DisplayMemberBinding="{Binding Password}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <TextBox Name="FilterTextBox" Width="180" Margin="30,10,0,10" TextChanged="CUstomer_Filter"/>
+                        <Button Margin="30,5,0,5" Width="100" Content="Add" Command="{Binding CreateCustomerCommand}"/>
+                        <Button Margin="30,5,0,5" Width="100" Content="Update" Command="{Binding UpdateCustomerCommand}"/>
+                        <Button Margin="30,5,0,5" Width="100" Content="Delete" Command="{Binding DeleteCustomerCommand}"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Car" Width="100" Height="50">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ListView Name="CarList" ItemsSource="{Binding Cars, Mode=OneWay}" SelectedItem="{Binding SelectedCar, Mode=OneWayToSource}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="50" Header="Id" DisplayMemberBinding="{Binding CarId}"/>
+                                <GridViewColumn Width="100" Header="Car Name" DisplayMemberBinding="{Binding CarName}"/>
+                                <GridViewColumn Width="100" Header="Description" DisplayMemberBinding="{Binding CarDescription}"/>
+                                <GridViewColumn Width="100" Header="Number of doors" DisplayMemberBinding="{Binding NumberOfDoors}"/>
+                                <GridViewColumn Width="100" Header="Seating capacity" DisplayMemberBinding="{Binding SeatingCapacity}"/>
+                                <GridViewColumn Width="100" Header="Fuel type" DisplayMemberBinding="{Binding FuelType}"/>
+                                <GridViewColumn Width="100" Header="Year" DisplayMemberBinding="{Binding Year}"/>
+                                <GridViewColumn Width="100" Header="Manufacturer Id" DisplayMemberBinding="{Binding ManufacturerId}"/>
+                                <GridViewColumn Width="100" Header="Supplier Id" DisplayMemberBinding="{Binding SupplierId}"/>
+                                <GridViewColumn Width="100" Header="Status" DisplayMemberBinding="{Binding CarStatus}"/>
+                                <GridViewColumn Width="100" Header="Renting price per day" DisplayMemberBinding="{Binding CarRentingPricePerDay}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <TextBox Name="CarFilterTextBox" TextChanged="Car_Filter" Width="180" Margin="30,10,0,10"/>
+                        <Button Margin="30,5,0,5" Width="100" Content="Add" Command="{Binding CreateCarCommand}"/>
+                        <Button Margin="30,5,0,5" Width="100" Content="Update" Command="{Binding UpdateCarCommand}"/>
+                        <Button Margin="30,5,0,5" Width="100" Content="Delete" Command="{Binding DeleteCarCommand}"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Transaction" Width="100" Height="50">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ListView Name="TransactionList" ItemsSource="{Binding RentingTransactions, Mode=OneWay}" SelectedItem="{Binding SelectedTransaction, Mode=OneWayToSource}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="50" Header="Id" DisplayMemberBinding="{Binding RentingTransationId}"/>
+                                <GridViewColumn Width="200" Header="Renting Date" DisplayMemberBinding="{Binding RentingDate}"/>
+                                <GridViewColumn Width="100" Header="Total Price" DisplayMemberBinding="{Binding TotalPrice}"/>
+                                <GridViewColumn Width="50" Header="Status" DisplayMemberBinding="{Binding RentingStatus}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <TextBox Name="TransactionFilterTextBox" TextChanged="Transaction_Filter" Width="160" Margin="20,10,0,10"/>
+                        <Button Margin="20,5,0,5" Width="100" Content="Add Transaction" Command="{Binding CreateTransactionCommand}"/>
+                        <Button Margin="20,5,0,5" Width="100" Content="Add Order" Command="{Binding CreateOrderCommand}"/>
+                        <Button Margin="20,5,0,5" Width="100" Content="Update" Command="{Binding UpdateTransactionCommand}"/>
+                        <Button Margin="20,5,0,5" Width="100" Content="Delete" Command="{Binding DeleteTransactionCommand}"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
